@@ -16,29 +16,23 @@ You should also create a seperate dictionary with the percentages of each charac
 # Import the pprint function from the pretty print module to make our lives easier later.
 from pprint import pprint
 
+# Import string so we can us string.ascii_uppercase
+import string
+
 # Standard code to open a text file and assign the contents to a string
 with open('moby_dick.txt', 'r') as file_handler:
     moby_dick = file_handler.read()
 
-# Create a dictionary named frequency dict.
-frequency_dict = dict()
-
-# For each character in the moby_dick string
-for character in moby_dick:
-
-    # Check to see if the character is alphanumeric
-    if character.isalpha():
-
-        # Check to see if the uppercase version of the character is in the dictionary keys
-        if character.upper() not in frequency_dict.keys():
-
-            # If it's not, create the variable with value 1
-            frequency_dict[character.upper()] = 1
-
-        else:
-
-            # If it is, simply increment the total count by one
-            frequency_dict[character.upper()] += 1
+# Create a dictionary named frequency dict using dictionary comprehensions
+frequency_dict = {character: moby_dick.upper().count(character) for character in string.ascii_uppercase}
 
 # Use pretty print to print the entire dictionary nicely (automatic alphabetization, clean formatting, etc.)
 pprint(frequency_dict)
+
+# Sum up all the values stored in the frequency dictionary
+total_characters = sum(frequency_dict.values())
+
+# Create percentage dictionary using dictionary comprehension
+percentage_dict = {key: value / total_characters for key, value in frequency_dict.items()}
+
+pprint(percentage_dict)
