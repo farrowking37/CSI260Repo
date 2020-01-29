@@ -72,8 +72,7 @@ class Player:
 
     def add_cards_to_bottom(self, cards):
         """Adds cards to the bottom of the player's personal hand"""
-        for card in cards:
-            self.cards.append(card)
+        self.cards.extend(card)
 
     def draw_from_top(self):
         """Draws the top card off the player's hand
