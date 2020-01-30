@@ -70,9 +70,9 @@ class Player:
     def __str__(self):
         return f'{self.name}'
 
-    def add_cards_to_bottom(self, cards):
+    def add_cards_to_bottom(self, new_cards):
         """Adds cards to the bottom of the player's personal hand"""
-        self.cards.extend(card)
+        self.cards.extend(new_cards)
 
     def draw_from_top(self):
         """Draws the top card off the player's hand
