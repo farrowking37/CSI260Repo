@@ -1,7 +1,7 @@
 """This module contains the country class detailed in the week 3 lab instructions
 
 Author: John Shultz
-Class: CSI-260-02
+Class: CSI-260-03
 Assignment: Week 3 Lab
 Due Date: February 4, 2020 11:59 PM
 
@@ -47,7 +47,7 @@ class Country:
 		:return: An fstring containing the population density of the country."""
 
 		density = self.population / self.area
-
+		print(f'For testing: {density:.1f}')
 		return float(f'{density:.1f}')
 
 	def summary(self):

@@ -100,11 +100,12 @@ class TestWeek3(unittest.TestCase):
                       "Country must define a method 'summary'.")
         expected_results = """\
 Kingdom of Awesome has a population of 10 people and is 2 square km. \
-It therefore has a population density of 5.0000 people per square km.
+It therefore has a population density of 5.0 people per square km.
 Beautiful Land has a population of 1 people and is 10 square km. \
-It therefore has a population density of 0.1000 people per square km.
-Chromeria has a population of 1000 people and is 1 square km. \
-It therefore has a population density of 1000.0000 people per square km."""
+It therefore has a population density of 0.1 people per square km.
+Chromeria has a population of 1000 p
+eople and is 1 square km. \
+It therefore has a population density of 1000.0 people per square km."""
         for country, expected_result in zip(countries,
                                             expected_results.split("\n")):
             summary = country.summary()
