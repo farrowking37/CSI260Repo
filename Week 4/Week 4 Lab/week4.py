@@ -40,7 +40,7 @@ while True:
 			if current_patient:
 
 				# Print all the patient info, as well as a list of patient options
-				str(current_patient)
+				print(current_patient)
 				print("1. Change Name")
 				print("2. Change Age")
 				print("3. Change Gender")

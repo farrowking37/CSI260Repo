@@ -27,23 +27,25 @@ class Patient:
 	_next_id = 1
 
 	def __str__(self):
-		"""When converted to string, prints out all information about patient.
+		"""Converts Patient object to string
 
-		:return: An empty string to prevent errors. Do not use print(Patient), instead use str(Patient) for same purpose
+		:return: A string containing all the information about the patient object.
 		"""
-		print(f'Name: {self.name}')
-		print(f'Age: {self.age}')
-		print(f'Gender: {self.gender}')
-		print(f'Height: {self.height}')
-		print(f'Weight: {self.weight}')
-		print("---Upcoming Procedures---")
-		for procedure in self.procedures:
-			print(str(procedure))
-		print("---Contacts---")
-		for contact in self.contact_list.items():
-			print(f'{contact[0]}: {contact[1]}')
 
-		return ""
+		output = ''
+		output += f'Name: {self.name}\n'
+		output += f'Age: {self.age}\n'
+		output += f'Gender: {self.gender}\n'
+		output += f'Height: {self.height}\n'
+		output += f'Weight: {self.weight}\n'
+		output += "---Upcoming Procedures---\n"
+		for procedure in self.procedures:
+			output += f'-{procedure}\n'
+		output += "---Contacts---\n"
+		for contact in self.contact_list.items():
+			output += f'{contact[0]}: {contact[1]}\n'
+
+		return output
 
 	def __init__(self, name, age, gender, height, weight, contact_list=dict()):
 		"""Initialize a new Patient
