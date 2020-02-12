@@ -18,7 +18,7 @@ assignment may, for the purpose of assessing this assignment:
 from medical import Patient, Procedure
 
 print("Hi! Welcome to the patient management tool! Before we can begin, we need to load the patient_info.")
-file_name = str(input("Plese enter in the full file path and name without extension where we can find this file: "))
+file_name = str(input("Please enter in the full file path and name without extension where we can find this file: "))
 
 Patient.load_patients(file_name)
 
