@@ -16,7 +16,6 @@ class Patient:
 		return f'Name: {self.name}\nAge: {self.age}\nGender: {self.gender}\nHeight: {self.height}\n' \
 			f'Weight: {self.weight}\nUpcoming Procedures: {print_procedures}\nContacts: {self.contact_list}'
 
-
 	def __init__(self, name, age, gender, height, weight, contact_list=dict()):
 		"""Initialize a new Patient
 
