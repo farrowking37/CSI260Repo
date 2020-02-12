@@ -20,9 +20,9 @@ import pickle
 
 
 class Patient:
-	# Private class variable ID. Prefixed with an underscore as
-	_next_id = 1
+	# Private class variable _all_patients
 	_all_patients = dict()
+	_next_id = 1
 
 	def __str__(self):
 		"""When converted to string, prints out all information about patient.
@@ -116,7 +116,7 @@ class Patient:
 		:param file_name: (str) The desired file path and name for the pickle file. No file extension should be included
 		:return: Nothing. Saves a pickle file to the user's drive at the path listed in file_name
 		"""
-		pickle.dump(Patient._all_patients, open(f'{file_name}.p', 'wb'))
+		pickle.dump((Patient._all_patients, Patient._next_id), open(f'{file_name}.p', 'wb'))
 
 	@staticmethod
 	def load_patients(file_name):
@@ -126,7 +126,7 @@ class Patient:
 		:return: Nothing. Either loads file or prints file not found.
 		"""
 		try:
-			Patient._all_patients = pickle.load(open(f'{file_name}.p', 'rb'))
+			Patient._all_patients, Patient._next_id = pickle.load(open(f'{file_name}.p', 'rb'))
 		except FileNotFoundError:
 			print("No file with that name found!")
 

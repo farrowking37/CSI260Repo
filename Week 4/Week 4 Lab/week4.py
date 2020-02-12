@@ -78,8 +78,8 @@ while True:
 
 					# Add or Modify a contact number
 					elif patient_choice == 6:
-						contact = str(input("Please enter in the label for the new contact or contact to be modified"))
-						number = str(input("Please enter in the new number"))
+						contact = str(input("Please enter in the label for the new contact or contact to be modified:"))
+						number = str(input("Please enter in the new number:"))
 						current_patient.contact_list[contact] = number
 
 					# Remove Contact
@@ -90,7 +90,7 @@ while True:
 							print(contact)
 
 						# Delete the contact of the user's choice.
-						contact = str(input("Which of the above contacts would you like to delete?"))
+						contact = str(input("Which of the above contacts would you like to delete? "))
 						del current_patient.contact_list[contact]
 
 					# Add procedure
@@ -140,7 +140,7 @@ while True:
 
 				# Use string truthiness. If the contact is empty, break the loop. Otherwise, prompt for the number.
 				if contact:
-					number = str(input("Please enter the phone number associated with this label"))
+					number = str(input("Please enter the phone number associated with this label: "))
 					contact_list[contact] = number
 				else:
 					break
