@@ -108,8 +108,9 @@ class Patient:
 		# Try to delete the given ID from the list of all patients. If it exists, delete it. If not, do nothing.
 		try:
 			del Patient._all_patients[patient_id]
+			print("Record Deleted")
 		except KeyError:
-			pass
+			print("No record with that ID found to delete")
 
 	@staticmethod
 	def save_patients(file_name):
