@@ -1,4 +1,20 @@
-# A skeleton of the week4.py CLI interface for interacting with the objects in medical.py
+"""This Module serves as the CLI for the classes contained within medical.py
+
+Author: John Shultz
+Class: CSI-260-03
+Assignment: Week 4 Lab
+Due Date: February 13, 2020 11:59 PM
+
+Certification of Authenticity:
+I certify that this is entirely my own work, except where I have given
+fully-documented references to the work of others. I understand the definition
+and consequences of plagiarism and acknowledge that the assessor of this
+assignment may, for the purpose of assessing this assignment:
+- Reproduce this assignment and provide a copy to another member of academic
+- staff; and/or Communicate a copy of this assignment to a plagiarism checking
+- service (which may then retain a copy of this assignment on its database for
+- the purpose of future plagiarism checking)
+"""
 from medical import Patient, Procedure
 
 print("Hi! Welcome to the patient management tool! Before we can begin, we need to load the patient_info.")
@@ -24,7 +40,7 @@ while True:
 			if current_patient:
 
 				# Print all the patient info, as well as a list of patient options
-				print(current_patient)
+				str(current_patient)
 				print("1. Change Name")
 				print("2. Change Age")
 				print("3. Change Gender")

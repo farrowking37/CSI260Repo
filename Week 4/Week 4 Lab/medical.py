@@ -1,3 +1,21 @@
+"""This Module conatins the classes of Patient and Procedue, designed to track information about patients and the
+procedures they will be undergoing.
+
+Author: John Shultz
+Class: CSI-260-03
+Assignment: Week 4 Lab
+Due Date: February 13, 2020 11:59 PM
+
+Certification of Authenticity:
+I certify that this is entirely my own work, except where I have given
+fully-documented references to the work of others. I understand the definition
+and consequences of plagiarism and acknowledge that the assessor of this
+assignment may, for the purpose of assessing this assignment:
+- Reproduce this assignment and provide a copy to another member of academic
+- staff; and/or Communicate a copy of this assignment to a plagiarism checking
+- service (which may then retain a copy of this assignment on its database for
+- the purpose of future plagiarism checking)
+"""
 import pickle
 
 
@@ -7,14 +25,23 @@ class Patient:
 	_all_patients = dict()
 
 	def __str__(self):
+		"""When converted to string, prints out all information about patient.
 
-		# Workaround to handle the way that f strings handle objects in lists.
-		print_procedures = []
+		:return: An empty string to prevent errors. Do not use print(Patient), instead use str(Patient) for same purpose
+		"""
+		print(f'Name: {self.name}')
+		print(f'Age: {self.age}')
+		print(f'Gender: {self.gender}')
+		print(f'Height: {self.height}')
+		print(f'Weight: {self.weight}')
+		print("---Upcoming Procedures---")
 		for procedure in self.procedures:
-			print_procedures.append(str(procedure))
+			print(str(procedure))
+		print("---Contacts---")
+		for contact in self.contact_list.items():
+			print(f'{contact[0]}: {contact[1]}')
 
-		return f'Name: {self.name}\nAge: {self.age}\nGender: {self.gender}\nHeight: {self.height}\n' \
-			f'Weight: {self.weight}\nUpcoming Procedures: {print_procedures}\nContacts: {self.contact_list}'
+		return ""
 
 	def __init__(self, name, age, gender, height, weight, contact_list=dict()):
 		"""Initialize a new Patient
@@ -108,6 +135,11 @@ class Procedure:
 	_next_id = 1
 
 	def __str__(self):
+		"""Creates the string that is returned when you cast a procedure to a string.
+
+		:return: An f-string containing all information about a procedure.
+		"""
+
 		return f'On {self.date} {self.doctor} will perform {self.name} at {self.location}'
 
 	def __init__(self, name, doctor, location, date):
