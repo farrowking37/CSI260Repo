@@ -22,6 +22,8 @@ import pickle
 class Patient:
 	# Private class variable _all_patients
 	_all_patients = dict()
+
+	# Private class variable _next_id
 	_next_id = 1
 
 	def __str__(self):
@@ -111,7 +113,7 @@ class Patient:
 
 	@staticmethod
 	def save_patients(file_name):
-		"""Create a pickle file containing the _all_patients dictionary
+		"""Create a pickle file containing a tuple of the _all_patients dictionary and the _next_id value
 
 		:param file_name: (str) The desired file path and name for the pickle file. No file extension should be included
 		:return: Nothing. Saves a pickle file to the user's drive at the path listed in file_name
@@ -120,7 +122,7 @@ class Patient:
 
 	@staticmethod
 	def load_patients(file_name):
-		"""Load a pickle file containing an _all_patients dictionary to the Patient._all_parents dictionary
+		"""Loads the _all_patients dictionary and _next_id values from a pickle file and saves them to class variables.
 
 		:param file_name: (str) The desired file path and name for the pickle file. No file extension should be included
 		:return: Nothing. Either loads file or prints file not found.
