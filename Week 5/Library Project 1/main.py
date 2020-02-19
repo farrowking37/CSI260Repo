@@ -2,7 +2,7 @@ from library_catalog import LibraryItem
 
 def search_catalog():
     """UI for searching the catalog"""
-    print('searching the catalog')
+    print('Searching the catalog')
     # Todo Complete function
 
 

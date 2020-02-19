@@ -1,6 +1,56 @@
 """
 Contains definitions for the abstract base class LibraryItem as well as CategoryTags
 """
+class Catalog:
+    """Base class to hold lists of library items
+    """
+
+    def __init__(self, name, _all_items=[]):
+        """Initalize a Catalog
+
+        :param name: (string) Name of the catalog
+        :param _all_items: (list) List of LibraryItems in the catalog. Private
+        """
+        self.name = name
+        self._all_items = _all_items
+
+    def add_items(self, library_items):
+        """Add a list of items to the list of all library items
+
+        :param library_items: (list) A list of library items to add
+        :return: Nothing
+        """
+        for item in library_items:
+            self._all_items.append(item)
+
+    def remove_items(self, library_items):
+        """Remove a list of items from the catalog
+
+        :param library_items: (list) A list of library items to remove.
+        :return: Nothing
+        """
+        for item in library_items:
+            try:
+                self._all_items.remove(item)
+            except ValueError:
+                pass
+
+    def search_items(self, filter_text):
+        """ Search for items and add any matching items to a list
+
+        :param filter_text: (string) The text to search for in the item's fields
+        :return: A list of matching objects
+        """
+        output = []
+
+        for item in self._all_items:
+
+            if item.match(filter_text):
+                output.append(item)
+
+        return output
+
+
 
 class LibraryItem:
     """Base class for all items stored in a library catalog
@@ -8,8 +58,6 @@ class LibraryItem:
     Provides a simple LibraryItem with only a few attributes
 
     """
-
-    _all_items = []
 
     def __init__(self, name, isbn, tags=[]):
         """Initialize a LibraryItem
@@ -87,6 +135,14 @@ class Book(LibraryItem):
 class DVD(LibraryItem):
 
     def __init__(self, name, isbn, director, actor, tags=[]):
+        """ Initialize a book Item
+
+        :param name: (string)
+        :param isbn: (string)
+        :param director:
+        :param actor:
+        :param tags:
+        """
         super().__init__(name, isbn, tags)
         self.director = director
         self.actor = actor
@@ -104,6 +160,7 @@ class DVD(LibraryItem):
 class MusicCD(LibraryItem):
 
     def __init__(self, name, isbn, artist, album, num_discs, tags):
+
         super().__init__(name, isbn, tags)
         self.artist = artist
         self.album = album
@@ -117,3 +174,4 @@ class MusicCD(LibraryItem):
 
     def __str__(self):
         return super().__str__() + f'\n{self.artist}\n{self.album}\n{self.num_discs}'
+
