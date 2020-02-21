@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7a92054-8961-4a85-b900-32f65691cf68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 5/Library Project 1/library_catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week 5/Library Project 1/library_catalog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 5/Library Project 1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week 5/Library Project 1/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 6/Class Notes/midterm_review.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week 6/Class Notes/midterm_review.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,26 +17,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Week 5/Library Project 1/library_catalog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="134" column="23" selection-start-line="134" selection-start-column="23" selection-end-line="134" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Week 6/Class Notes/midterm_review.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="3285">
+              <caret line="219" column="28" selection-start-line="219" selection-start-column="28" selection-end-line="219" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Week 6/Class Notes/midterm_review.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
+              <folding>
+                <element signature="e#1401#1410#1" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Week 5/Library Project 1/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+            <state relative-caret-position="510">
+              <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -67,10 +72,10 @@
         <option value="$PROJECT_DIR$/Week 3/CountryProject/week3.py" />
         <option value="$PROJECT_DIR$/Week 4/Class Notes/conversions.py" />
         <option value="$PROJECT_DIR$/Week 5/Library Project 1/LibraryItem.py" />
-        <option value="$PROJECT_DIR$/Week 5/Library Project 1/main.py" />
-        <option value="$PROJECT_DIR$/Week 5/Library Project 1/library_catalog.py" />
         <option value="$PROJECT_DIR$/Week 6/Class Notes/midterm_review.txt" />
         <option value="$PROJECT_DIR$/Week 6/Class Notes/midterm_review.py" />
+        <option value="$PROJECT_DIR$/Week 5/Library Project 1/library_catalog.py" />
+        <option value="$PROJECT_DIR$/Week 5/Library Project 1/main.py" />
       </list>
     </option>
   </component>
@@ -338,12 +343,12 @@
       <workItem from="1580493278880" duration="124000" />
       <workItem from="1580923228628" duration="1967000" />
       <workItem from="1582133378341" duration="4192000" />
-      <workItem from="1582306115997" duration="1380000" />
+      <workItem from="1582306115997" duration="4444000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18971000" />
+    <option name="totallyTimeSpent" value="22035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1290" y="0" width="1270" height="1440" extended-state="0" />
@@ -354,7 +359,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35453215" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35453215" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -364,7 +369,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32967836" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.32967836" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -457,13 +462,6 @@
         <state relative-caret-position="-768" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Week 5/Library Project 1/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Week 6/Class Notes/midterm_review.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -473,15 +471,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Week 5/Library Project 1/library_catalog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="134" column="23" selection-start-line="134" selection-start-column="23" selection-end-line="134" selection-end-column="23" />
+        <state relative-caret-position="3285">
+          <caret line="219" column="28" selection-start-line="219" selection-start-column="28" selection-end-line="219" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Week 6/Class Notes/midterm_review.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="840">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="e#1401#1410#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week 5/Library Project 1/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="55" column="34" lean-forward="true" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
         </state>
       </provider>
     </entry>

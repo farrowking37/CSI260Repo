@@ -44,6 +44,14 @@ def conditional_double_list(list_to_double):
 
     return new_list
 
+""" Difference between an static, class, and instance method
+
+By default you should assume a method is an instance method. If it uses no instance variables (doesn't reference self) 
+but does use class variables, it's a class method. If it uses neither, it's a static method.
+
+You use self in instance methods, cls in class methods
+"""
+
 
 # Test code goes here.
 my_nums = [1, 2, 3]

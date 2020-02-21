@@ -1,18 +1,24 @@
 """
 Contains definitions for the abstract base class LibraryItem as well as CategoryTags
 """
+
+
 class Catalog:
     """Base class to hold lists of library items
     """
 
-    def __init__(self, name, _all_items=[]):
+    def __init__(self, name, _all_items=None):
         """Initalize a Catalog
 
         :param name: (string) Name of the catalog
         :param _all_items: (list) List of LibraryItems in the catalog. Private
         """
         self.name = name
-        self._all_items = _all_items
+
+        if _all_items:
+            self._all_items = _all_items
+        else:
+            self._all_items = []
 
     def add_items(self, library_items):
         """Add a list of items to the list of all library items
@@ -59,7 +65,7 @@ class LibraryItem:
 
     """
 
-    def __init__(self, name, isbn, tags=[]):
+    def __init__(self, name, isbn, tags=None):
         """Initialize a LibraryItem
 
         :param name: (string) Name of item
@@ -68,7 +74,11 @@ class LibraryItem:
         """
         self.name = name
         self.isbn = isbn
-        self.tags = tags
+
+        if tags:
+            self.tags = tags
+        else:
+            self.tags = []
         self.resource_type = 'Generic'  # This is the type of item being stored
 
     def match(self, filter_text):
@@ -110,13 +120,30 @@ class LibraryItem:
 
 
 class Book(LibraryItem):
+    """Base class for any Books
+    """
 
-    def __init__(self, name, isbn, author, tags=[]):
+    def __init__(self, name, isbn, author, tags=None):
+        """
+        Initialize a new book object
+
+        :param name: (string) The name (title) of the book
+        :param isbn: (string) The ISBN of the object
+        :param author: (string) The name of athe author of the book.
+        :param tags:  (list) A list of tags describing the book ex. ['Romance', 'Victorian']
+        """
         super().__init__(name, isbn, tags)
         self.author = author
         self.resource_type = "Book"
 
     def match(self, filter_text):
+        """An extension of the match function in the base LibraryItem class.
+
+        Also searches for the filter text in the author variable.
+
+        :param filter_text: (string) The text to search for
+        :return: A boolean true false value for whether the filter text was in any of the locations
+        """
 
         return filter_text.lower() in self.author.lower() or \
             super().match(filter_text)
@@ -127,21 +154,25 @@ class Book(LibraryItem):
         All instance variables are included.
 
         All subclasses must provide a __str__ method
+
+        :return: A well formatted string reprsentation fo the item
         """
 
         return super().__str__() + f'\n{self.author}'
 
 
-class DVD(LibraryItem):
+class DVDMovie(LibraryItem):
+    """Base class for any DvDs
+    """
 
-    def __init__(self, name, isbn, director, actor, tags=[]):
-        """ Initialize a book Item
+    def __init__(self, name, isbn, director, actor, tags=None):
+        """ Initialize a DVDMovie Item
 
-        :param name: (string)
-        :param isbn: (string)
-        :param director:
-        :param actor:
-        :param tags:
+        :param name: (string) The name of the DVD
+        :param isbn: (string) The ISBN of the DVD
+        :param director: (string) The director of the movie
+        :param actor: (string) The lead actor in the movie
+        :param tags: (list) A list of tags describing the movie content. ex. ["Christmas", "Action", "Robbery"]
         """
         super().__init__(name, isbn, tags)
         self.director = director
@@ -149,29 +180,57 @@ class DVD(LibraryItem):
         self.resource_type = "DVD"
 
     def match(self, filter_text):
+        """An extension of the LibraryItem's match method. Also searches for filter text in the director and actor
+        fields.
+
+        :param filter_text: (string) The text to search for
+        :return: A boolean true or false value for whether the variable was found
+        """
+
         return filter_text.lower() in self.director.lower() or \
             filter_text.lower() in self.actor.lower() or \
             super().match(filter_text)
 
     def __str__(self):
+        """Return a well formatted string representation of the item
+
+        All instance variables are included.
+
+        All subclasses must provide a __str__ method
+        :return: A well formatted string representation of the item
+        """
         return super().__str__() + f'\n{self.actor}\n{self.director}'
 
 
 class MusicCD(LibraryItem):
+    """ Base class for any music CDs
+    """
 
-    def __init__(self, name, isbn, artist, album, num_discs, tags):
+    def __init__(self, name, isbn, artist, num_discs, tags=None):
+        """ Initialize a MusicCD item.
+
+        :param name: (string) The name of the MusicCD
+        :param isbn: (string) The ISBN number of the CD
+        :param artist: (string) The recording artist for the MusicCD
+        :param num_discs: (int) The number of discs in the case
+        :param tags: (list) A list of tags describing the item. ex. ["60s", "British", "Rock"]
+        """
 
         super().__init__(name, isbn, tags)
         self.artist = artist
-        self.album = album
         self.num_discs = num_discs
         self.resource_type = "Music CD"
 
     def match(self, filter_text):
+        """ An extension of the Library Item's match method. Also searches for the filter text in the artist variable
+
+        :param filter_text: (string) The text being searched for
+        :return: A boolean true or false for whether there was a match or not.
+        """
+
         return filter_text.lower() in self.artist.lower() or \
-            filter_text.lower() in self.album.lower() or \
             super().match(filter_text)
 
     def __str__(self):
-        return super().__str__() + f'\n{self.artist}\n{self.album}\n{self.num_discs}'
+        return super().__str__() + f'\n{self.artist}\n{self.num_discs}'
 
