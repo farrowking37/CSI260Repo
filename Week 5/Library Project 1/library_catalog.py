@@ -249,4 +249,11 @@ class MusicCD(LibraryItem):
             super().match(filter_text)
 
     def __str__(self):
+        """Return a well formatted string representation of the item
+
+        All instance variables are included.
+
+        All subclasses must provide a __str__ method
+        :return: A well formatted string representation of the item
+        """
         return super().__str__() + f'Recording Artist: {self.artist}\nNumber of Discs: {self.num_discs}\n'
