@@ -171,8 +171,6 @@ catalog_menu = """Library Catalog Menu
 2. Print the entire catalog
 3. Add items to catalog
 4. Remove items from catalog
-5. Open catalog from file
-6. Save catalog to file
 
 Choose an option: """
 
