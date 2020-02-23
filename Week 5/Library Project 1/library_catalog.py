@@ -1,5 +1,18 @@
-"""
-Contains definitions for the abstract base class LibraryItem as well as CategoryTags
+"""Contains Descriptions for the Catalog, LibraryItem, Book, DVDMovie, and MusicCD classes.
+Author: John Shultz
+Class: CSI-260-03
+Assignment: Library Project Part 1
+Due Date: 2/26/2019 12:30 PM
+
+Certification of Authenticity:
+I certify that this is entirely my own work, except where I have given
+fully-documented references to the work of others. I understand the definition
+and consequences of plagiarism and acknowledge that the assessor of this
+assignment may, for the purpose of assessing this assignment:
+- Reproduce this assignment and provide a copy to another member of academic
+- staff; and/or Communicate a copy of this assignment to a plagiarism checking
+- service (which may then retain a copy of this assignment on its database for
+- the purpose of future plagiarism checking)
 """
 
 
