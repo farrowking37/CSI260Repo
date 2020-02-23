@@ -7,10 +7,26 @@ catalog = Catalog("Champlain College Library Catalog")
 def search_catalog():
     """UI for searching the catalog"""
     filter_text = str(input("Enter in some text to search for (name, author, director, tag, etc.): "))
+    while True:
+        print("1. Book\n2. DVD Movie\n3. Music CD")
+        type_filter = input("Enter in one of the above choices to filter by item or nothing to show all items: ")
+        if type_filter in ["1", "2", "3", ""]:
+            break
+        else:
+            print("Please only enter in a valid choice or no input.")
+
     print('Searching the catalog')
 
+    filter_dict = {"1": "Book", "2": "DVD", "3": "Music CD"}
+
     # Call the Catalog.search_items function which returns a list of matching items
-    found_items = catalog.search_items(filter_text)
+    if type_filter:
+        found_items = catalog.search_items(filter_text, filter_dict[type_filter])
+    else:
+        found_items = catalog.search_items(filter_text)
+
+    print("Here are your results!")
+    print("---------------------")
 
     # Check to see if any items were found. If any were, print each found item to screen
     if found_items:
@@ -21,6 +37,7 @@ def search_catalog():
 def print_catalog():
 
     print("Here all all the items in the library catalog!")
+    print("----------------------------------------------")
 
     for item in catalog._all_items:
         print(item)
@@ -134,7 +151,7 @@ catalog_menu = """Library Catalog Menu
 1. Search catalog
 2. Print the entire catalog
 3. Add items to catalog
-4. remove items from catalog
+4. Remove items from catalog
 5. Open catalog from file
 6. Save catalog to file
 

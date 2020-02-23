@@ -41,18 +41,23 @@ class Catalog:
             except ValueError:
                 pass
 
-    def search_items(self, filter_text):
+    def search_items(self, filter_text, type_filter=None):
         """ Search for items and add any matching items to a list
 
         :param filter_text: (string) The text to search for in the item's fields
+        :param type_filte: (string) A valid object type. If set, only adds objects of that type to search output.
         :return: A list of matching objects
         """
         output = []
 
         for item in self._all_items:
 
-            if item.match(filter_text):
-                output.append(item)
+            if type_filter:
+                if item.match(filter_text) and item.resource_type == type_filter:
+                    output.append(item)
+            else:
+                if item.match(filter_text):
+                    output.append(item)
 
         return output
 
@@ -157,7 +162,7 @@ class Book(LibraryItem):
         :return: A well formatted string reprsentation fo the item
         """
 
-        return super().__str__() + f'\nAuthor: {self.author}'
+        return super().__str__() + f'Author: {self.author}\n'
 
 
 class DVDMovie(LibraryItem):
