@@ -95,7 +95,7 @@ def add_item():
                 new_book = Book(name, isbn, author, tags)
                 new_items.append(new_book)
 
-            if item_choice == 2:
+            elif item_choice == 2:
                 # Make a DVD movie
                 name = str(input("Enter the name of the DVD: "))
                 isbn = str(input("Enter the ISBN of the DVD: "))
@@ -115,7 +115,7 @@ def add_item():
                 new_dvd = DVDMovie(name, isbn, director, actor, tags)
                 new_items.append(new_dvd)
 
-            if item_choice == 3:
+            elif item_choice == 3:
                 # Make a Music CD
                 name = str(input("Enter the name of the CD: "))
                 isbn = str(input("Enter the ISBN of the CD: "))
@@ -140,6 +140,9 @@ def add_item():
 
                 new_cd = MusicCD(name, isbn, artist, num_discs, tags)
                 new_items.append(new_cd)
+
+            else:
+                print("Please enter one of the above numbers")
 
             run_again = str(input("Would you like to add another item (Y/N): "))
 
