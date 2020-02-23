@@ -8,7 +8,7 @@ class Catalog:
     """
 
     def __init__(self, name, _all_items=None):
-        """Initalize a Catalog
+        """Initialize a Catalog
 
         :param name: (string) Name of the catalog
         :param _all_items: (list) List of LibraryItems in the catalog. Private
@@ -55,7 +55,6 @@ class Catalog:
                 output.append(item)
 
         return output
-
 
 
 class LibraryItem:
@@ -106,7 +105,7 @@ class LibraryItem:
 
         All subclasses must provide a __str__ method
         """
-        return f'{self.name}\n{self.isbn}\n{self.resource_type}\n{", ".join(self.tags)}'
+        return f'Name: {self.name}\nISBN: {self.isbn}\nItem Type: {self.resource_type}\nTags: {", ".join(self.tags)}\n'
 
     def to_short_string(self):
         """Return a short string representation of the item
@@ -158,7 +157,7 @@ class Book(LibraryItem):
         :return: A well formatted string reprsentation fo the item
         """
 
-        return super().__str__() + f'\n{self.author}'
+        return super().__str__() + f'\nAuthor: {self.author}'
 
 
 class DVDMovie(LibraryItem):
@@ -199,7 +198,7 @@ class DVDMovie(LibraryItem):
         All subclasses must provide a __str__ method
         :return: A well formatted string representation of the item
         """
-        return super().__str__() + f'\n{self.actor}\n{self.director}'
+        return super().__str__() + f'Lead Actor: {self.actor}\nDirector: {self.director}\n'
 
 
 class MusicCD(LibraryItem):
@@ -232,5 +231,4 @@ class MusicCD(LibraryItem):
             super().match(filter_text)
 
     def __str__(self):
-        return super().__str__() + f'\n{self.artist}\n{self.num_discs}'
-
+        return super().__str__() + f'Recording Artist: {self.artist}\nNumber of Discs: {self.num_discs}\n'

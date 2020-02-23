@@ -1,8 +1,12 @@
 from library_catalog import LibraryItem, DVDMovie, MusicCD, Book, Catalog
 
+# Create a catalog named catalog that we will work with.
+catalog = Catalog("Champlain College Library Catalog")
 
-def search_catalog(catalog, filter_text):
+
+def search_catalog():
     """UI for searching the catalog"""
+    filter_text = str(input("Enter in some text to search for (name, author, director, tag, etc.): "))
     print('Searching the catalog')
 
     # Call the Catalog.search_items function which returns a list of matching items
@@ -14,7 +18,7 @@ def search_catalog(catalog, filter_text):
             print(item)
 
 
-def print_catalog(catalog):
+def print_catalog():
 
     print("Here all all the items in the library catalog!")
 
@@ -22,7 +26,11 @@ def print_catalog(catalog):
         print(item)
 
 
-def add_item(catalog):
+def add_item():
+    """Adds a list of items to the catalog
+
+    :return: No return value, but appends a list of items to catalog._all_items
+    """
 
     new_items = []
 
@@ -37,8 +45,8 @@ def add_item(catalog):
             if item_choice == 1:
                 # Make a book
                 name = str(input("Enter the name of the book: "))
-                isbn = str(input("Enter the ISBN of the book"))
-                author = str(input("Enter the author of the book"))
+                isbn = str(input("Enter the ISBN of the book: "))
+                author = str(input("Enter the author of the book: "))
                 tags = []
                 while True:
                     new_tag = str(input("Enter in a tag describing the book, or nothing to quit: "))
@@ -51,21 +59,74 @@ def add_item(catalog):
                 new_book = Book(name, isbn, author, tags)
                 new_items.append(new_book)
 
-
             if item_choice == 2:
-                # Make a DVD Movie
-                pass
+                # Make a DVD movie
+                name = str(input("Enter the name of the DVD: "))
+                isbn = str(input("Enter the ISBN of the DVD: "))
+                director = str(input("Enter in the director of the movie: "))
+                actor = str(input("Enter in the lead actor in the movie: "))
+                tags = []
+
+                while True:
+
+                    new_tag = str(input("Enter in a tag describing the movie, or nothing to quit: "))
+
+                    if new_tag:
+                        tags.append(new_tag)
+                    else:
+                        break
+
+                new_dvd = DVDMovie(name, isbn, director, actor, tags)
+                new_items.append(new_dvd)
+
             if item_choice == 3:
                 # Make a Music CD
-                pass
+                name = str(input("Enter the name of the CD: "))
+                isbn = str(input("Enter the ISBN of the CD: "))
+                artist = str(input("Enter in the recording artist of the CD: "))
+
+                while True:
+                    try:
+                        num_discs = int(input("Please enter in the number of discs: "))
+                        break
+
+                    except ValueError:
+                        print("That's not a valid number!")
+
+                tags = []
+                while True:
+                    new_tag = str(input("Enter in a tag describing the CD, or nothing to quit: "))
+
+                    if new_tag:
+                        tags.append(new_tag)
+                    else:
+                        break
+
+                new_cd = MusicCD(name, isbn, artist, num_discs, tags)
+                new_items.append(new_cd)
+
+            run_again = str(input("Would you like to add another item (Y/N): "))
+
+            if run_again.lower() not in ['y', 'yes']:
+                catalog.add_items(new_items)
+                break
 
         except ValueError:
             print("Please enter one of the above numbers")
 
 
 def remove_item():
-    pass
-    # Todo Complte Function
+    """Takes an item with a given name and removes it from the catalog
+
+    :return: nothing. Removes entries from catalog._all_items
+    """
+
+    remove_name = str(input("Enter the name of the item you wish to remove: "))
+
+    for item in catalog._all_items:
+        if item.name.lower() == remove_name.lower():
+            print(f'Removing a {item.resource_type} named {item.name}')
+            catalog.remove_items([item])
 
 
 catalog_menu = """Library Catalog Menu
