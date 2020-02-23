@@ -45,7 +45,7 @@ class Catalog:
         """ Search for items and add any matching items to a list
 
         :param filter_text: (string) The text to search for in the item's fields
-        :param type_filte: (string) A valid object type. If set, only adds objects of that type to search output.
+        :param type_filter: (string) A valid object type. If set, only adds objects of that type to search output.
         :return: A list of matching objects
         """
         output = []
