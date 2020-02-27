@@ -16,7 +16,40 @@ assignment may, for the purpose of assessing this assignment:
 - service (which may then retain a copy of this assignment on its database for
 - the purpose of future plagiarism checking)
 """
-from abc import ABC, abstractclassmethod, abstractmethod, abstractstaticmethod
+from abc import ABC, abstractmethod
+import pickle
+
+
+class CategoryTag:
+    """Base class to describe a category tag
+    """
+    _all_tags = []
+
+    def __init__(self, name):
+        """Initialize a CategoryTag
+
+        :param name: (string) The name of the tag
+        """
+        self.name = name.lower()
+        CategoryTag._all_tags.append(self)
+
+    def __str__(self):
+        """Use the tag's name as it's string form
+
+        :return: (string) the tag's name
+        """
+        return f'{self.name}'
+
+    @staticmethod
+    def all_category_tags():
+        """Print all the tags currently stored in _all_tags
+
+        :return: A formatted string containing every single tag.
+        """
+        output = ""
+        for tag in CategoryTag._all_tags:
+            output += f'{tag}\n'
+        return output
 
 
 class Catalog:
@@ -77,6 +110,15 @@ class Catalog:
 
         return output
 
+    def save_catalog(self, file_name):
+        pickle.dump(self._all_items, open(f'{file_name}.p', 'wb'))
+
+    def load_catalog(self, file_name):
+        try:
+            self._all_items = pickle.load(open(f'{file_name}.p', 'rb'))
+        except FileNotFoundError:
+            print("No file with that name found!")
+
 
 class LibraryItem(ABC):
     """Base class for all items stored in a library catalog
@@ -90,7 +132,7 @@ class LibraryItem(ABC):
 
         :param name: (string) Name of item
         :param isbn: (string) ISBN number for the item
-        :param tags: (list) List of CategoryTags
+        :param tags: (list) List of CategoryTag
         """
         self.name = name
         self.isbn = isbn
@@ -119,14 +161,13 @@ class LibraryItem(ABC):
             filter_text.lower() == self.isbn.lower() or \
             filter_text.lower() in (str(tag).lower() for tag in self.tags)
 
+    @abstractmethod
     def __str__(self):
-        """Return a well formatted string representation of the item
+        """Abstract method. All subclasses must impliment a version of __str__()
 
-        All instance variables are included.
-
-        All subclasses must provide a __str__ method
+        :return: a well formatted string describing the object.
         """
-        return f'Name: {self.name}\nISBN: {self.isbn}\nItem Type: {self.resource_type}\nTags: {", ".join(self.tags)}\n'
+        pass
 
     def to_short_string(self):
         """Return a short string representation of the item
@@ -150,7 +191,7 @@ class Book(LibraryItem):
         :param name: (string) The name (title) of the book
         :param isbn: (string) The ISBN of the object
         :param author: (string) The name of athe author of the book.
-        :param tags:  (list) A list of tags describing the book ex. ['Romance', 'Victorian']
+        :param tags:  (list) A list of CategoryTags describing the book ex. ['Romance', 'Victorian']
         """
         super().__init__(name, isbn, tags)
         self.author = author
@@ -177,8 +218,11 @@ class Book(LibraryItem):
 
         :return: A well formatted string reprsentation fo the item
         """
+        output = []
+        for tag in self.tags:
+            output.append(f'{tag.name}')
 
-        return super().__str__() + f'Author: {self.author}\n'
+        return f'Book Title: {self.name}\nISBN: {self.isbn}\nAuthor: {self.author}\nTags: {", ".join(output)}\n'
 
 
 class DVDMovie(LibraryItem):
@@ -192,7 +236,7 @@ class DVDMovie(LibraryItem):
         :param isbn: (string) The ISBN of the DVD
         :param director: (string) The director of the movie
         :param actor: (string) The lead actor in the movie
-        :param tags: (list) A list of tags describing the movie content. ex. ["Christmas", "Action", "Robbery"]
+        :param tags: (list) A list of CategoryTags describing the movie content. ex. ["Christmas", "Action", "Robbery"]
         """
         super().__init__(name, isbn, tags)
         self.director = director
@@ -219,7 +263,12 @@ class DVDMovie(LibraryItem):
         All subclasses must provide a __str__ method
         :return: A well formatted string representation of the item
         """
-        return super().__str__() + f'Lead Actor: {self.actor}\nDirector: {self.director}\n'
+        output = []
+        for tag in self.tags:
+            output.append(f'{tag.name}')
+
+        return f'Movie Title: {self.name}\nISBN: {self.isbn}\nDirector: {self.director}\nLead Actor: {self.actor}\n' \
+               f'Tags: {", ".join(output)}\n'
 
 
 class MusicCD(LibraryItem):
@@ -233,7 +282,7 @@ class MusicCD(LibraryItem):
         :param isbn: (string) The ISBN number of the CD
         :param artist: (string) The recording artist for the MusicCD
         :param num_discs: (int) The number of discs in the case
-        :param tags: (list) A list of tags describing the item. ex. ["60s", "British", "Rock"]
+        :param tags: (list) A list of CategoryTags describing the item. ex. ["60s", "British", "Rock"]
         """
 
         super().__init__(name, isbn, tags)
@@ -259,4 +308,9 @@ class MusicCD(LibraryItem):
         All subclasses must provide a __str__ method
         :return: A well formatted string representation of the item
         """
-        return super().__str__() + f'Recording Artist: {self.artist}\nNumber of Discs: {self.num_discs}\n'
+        output = []
+        for tag in self.tags:
+            output.append(f'{tag.name}')
+
+        return f'Album Title: {self.name}\nISBN: {self.isbn}\nRecording Artist: {self.artist}\n' \
+               f'Number of Discs: {self.num_discs}\nTags: {", ".join(output)}\n'

@@ -16,11 +16,37 @@ assignment may, for the purpose of assessing this assignment:
 - service (which may then retain a copy of this assignment on its database for
 - the purpose of future plagiarism checking)
 """
-
-from library_catalog import LibraryItem, DVDMovie, MusicCD, Book, Catalog
+from library_catalog import LibraryItem, DVDMovie, MusicCD, Book, Catalog, CategoryTag
 
 # Create a catalog named catalog that we will work with.
 catalog = Catalog("Champlain College Library Catalog")
+
+
+def tagadd():
+    """A function to handle adding tags without creating tags with duplicate names
+
+    :return: A list of tags to add to a new object.
+    """
+
+    tags = []
+    while True:
+        new_tag = str(input("Enter in the name of the new tag ex. nonfiction: "))
+
+        # Check to see if new_tag is not empty
+        if new_tag:
+            # If the new tag is not in the list of all tag names, create a tag with that name and add it
+            # to list
+            if new_tag.lower() not in CategoryTag.all_category_tags().split():
+                tags.append(CategoryTag(new_tag))
+
+            # If there is a tag with that name, simply find the tag with the matching name and add that tag
+            # instead.
+            else:
+                for tag in CategoryTag._all_tags:
+                    if tag.name == new_tag.lower():
+                        tags.append(tag)
+        else:
+            return tags
 
 
 def search_catalog():
@@ -54,6 +80,10 @@ def search_catalog():
 
 
 def print_catalog():
+    """Prints the contents of the catalog neatly
+
+    :return: Nothing
+    """
 
     print("Here all all the items in the library catalog!")
     print("----------------------------------------------")
@@ -83,15 +113,7 @@ def add_item():
                 name = str(input("Enter the name of the book: "))
                 isbn = str(input("Enter the ISBN of the book: "))
                 author = str(input("Enter the author of the book: "))
-                tags = []
-                while True:
-                    new_tag = str(input("Enter in a tag describing the book, or nothing to quit: "))
-
-                    if new_tag:
-                        tags.append(new_tag)
-                    else:
-                        break
-
+                tags = tagadd()
                 new_book = Book(name, isbn, author, tags)
                 new_items.append(new_book)
 
@@ -101,17 +123,7 @@ def add_item():
                 isbn = str(input("Enter the ISBN of the DVD: "))
                 director = str(input("Enter in the director of the movie: "))
                 actor = str(input("Enter in the lead actor in the movie: "))
-                tags = []
-
-                while True:
-
-                    new_tag = str(input("Enter in a tag describing the movie, or nothing to quit: "))
-
-                    if new_tag:
-                        tags.append(new_tag)
-                    else:
-                        break
-
+                tags = tagadd()
                 new_dvd = DVDMovie(name, isbn, director, actor, tags)
                 new_items.append(new_dvd)
 
@@ -129,15 +141,7 @@ def add_item():
                     except ValueError:
                         print("That's not a valid number!")
 
-                tags = []
-                while True:
-                    new_tag = str(input("Enter in a tag describing the CD, or nothing to quit: "))
-
-                    if new_tag:
-                        tags.append(new_tag)
-                    else:
-                        break
-
+                tags = tagadd()
                 new_cd = MusicCD(name, isbn, artist, num_discs, tags)
                 new_items.append(new_cd)
 
@@ -168,12 +172,33 @@ def remove_item():
             catalog.remove_items([item])
 
 
+def save_catalog():
+    """Saves a .picle archive of the catalog's _all_items variable
+
+    :return:
+    """
+    file_name = str(input('Enter in the filename or filepath you want to save the file to, excluding extension: '))
+    catalog.save_catalog(file_name)
+
+
+def load_catalog():
+    """Loads a .pickle archive the catalog's _all_items variable
+
+    :return: Nothing
+    """
+    file_name = str(input('Enter in filename or filepath of pickle file to load from, excluding extension: '))
+
+    catalog.load_catalog(file_name)
+
+
 catalog_menu = """Library Catalog Menu
 
 1. Search catalog
 2. Print the entire catalog
 3. Add items to catalog
 4. Remove items from catalog
+5. Save the contents of the catalog
+6. Load a pickle archived catalog.
 
 Choose an option: """
 
@@ -181,7 +206,9 @@ Choose an option: """
 menu_options = {'1': search_catalog,
                 '2': print_catalog,
                 '3': add_item,
-                '4': remove_item}
+                '4': remove_item,
+                '5': save_catalog,
+                '6': load_catalog}
 
 while True:
     user_choice = input(catalog_menu)

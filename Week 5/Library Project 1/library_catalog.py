@@ -87,7 +87,7 @@ class LibraryItem:
 
         :param name: (string) Name of item
         :param isbn: (string) ISBN number for the item
-        :param tags: (list) List of CategoryTags
+        :param tags: (list) List of CategoryTag
         """
         self.name = name
         self.isbn = isbn
