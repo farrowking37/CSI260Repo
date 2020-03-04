@@ -163,7 +163,7 @@ class LibraryItem(ABC):
 
     @abstractmethod
     def __str__(self):
-        """Abstract method. All subclasses must impliment a version of __str__()
+        """Abstract method. All subclasses must implement a version of __str__()
 
         :return: a well formatted string describing the object.
         """
