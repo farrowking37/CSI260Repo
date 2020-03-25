@@ -16,7 +16,7 @@ def handle_string_temps(degrees):
     # [FKC]? Optional block, matches any of the three possible temperature characters
     parsed_degrees = re.match("-?[0-9/.]+[FKC]?", degrees)
 
-    # Save whatever the matching text is to parsed_degrees
+    # Save whatever the matching text is to parsed_degrees. Include the scale symbol (F, K, C, etc.)
     try:
         parsed_degrees = parsed_degrees.group()
         return parsed_degrees
@@ -49,18 +49,22 @@ class Temperature:
                                      forms
 
         """
-
+        # Check to see if degrees is an integer or float, if it is directly assign
         if isinstance(degrees, (int, float)):
             self.celsius = degrees
 
+        # Otherwise, if it is a string handle the string
         elif isinstance(degrees, str):
 
+            # Call our function handle_string_temps to parse string
             parsed_degrees = handle_string_temps(degrees)
 
+            # If a block was returned from the string
             if parsed_degrees:
 
+                # Handle the various possible legitimate options
                 if parsed_degrees[-1] == 'C':
-                    float(parsed_degrees[:-1])
+                    self.celsius = float(parsed_degrees[:-1])
                 elif parsed_degrees[-1] == 'F':
                     pass
                 elif parsed_degrees[-1] == 'K':
@@ -68,10 +72,12 @@ class Temperature:
                 elif parsed_degrees[-1].isnumeric():
                     self.celsius = float(parsed_degrees)
 
+                # If selected string cannot be parsed raise a value error
                 else:
                     raise ValueError(f'Provided string \'{degrees}\' does not contain a number')
 
         else:
+            # If neither of the previous options are useable, raise a temperature error
             raise TemperatureError('Degrees must be an int, float, or properly formatted string')
 
     @property
@@ -84,16 +90,14 @@ class Temperature:
         if isinstance(degrees, (int, float)):
             self._celsius = float(degrees)
         elif isinstance(degrees, str):
-            parsed_degress = handle_string_temps(degrees)
+            parsed_degrees = handle_string_temps(degrees)
 
-            if parsed_degress[-1] == 'C':
-                self._celsius = float(parsed_degress[:-1])
+            if parsed_degrees[-1] == 'C':
+                self._celsius = float(parsed_degrees[:-1])
             else:
-                self._celsius = float(parsed_degress)
+                self._celsius = float(parsed_degrees)
         else:
             raise TemperatureError(f"Provided string '{degrees}' contains no numbers")
-
-
 
     @classmethod
     def average(cls, temperatures):
@@ -108,7 +112,8 @@ class Temperature:
         pass
 
 
-"""test1 = Temperature(1)
+"""
+test1 = Temperature(1)
 print(test1.celsius)
 test2 = Temperature("1")
 print(test2.celsius)
