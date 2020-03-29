@@ -66,9 +66,9 @@ class Temperature:
                 if parsed_degrees[-1] == 'C':
                     self.celsius = float(parsed_degrees[:-1])
                 elif parsed_degrees[-1] == 'F':
-                    pass
+                    self.fahrenheit = float(parsed_degrees[:-1])
                 elif parsed_degrees[-1] == 'K':
-                    pass
+                    self.kelvin = float(parsed_degrees[:-1])
                 elif parsed_degrees[-1].isnumeric():
                     self.celsius = float(parsed_degrees)
 
@@ -99,6 +99,47 @@ class Temperature:
         else:
             raise TemperatureError(f"Provided string '{degrees}' contains no numbers")
 
+    @property
+    def fahrenheit(self):
+        return (self._celsius * 1.8) + 32
+
+    @fahrenheit.setter
+    def fahrenheit(self, degrees):
+
+        if isinstance(degrees, (int, float)):
+            # Convert Fahrenheit value to Celsius and store.
+            self._celsius = (degrees - 32) * (5/9)
+
+        elif isinstance(degrees, str):
+            parsed_degrees = handle_string_temps(degrees)
+
+            if parsed_degrees[-1] == "F":
+                self._celsius = (float(parsed_degrees[:-1]) - 32) * (5/9)
+            else:
+                self._celsius = (float(parsed_degrees) - 32) * (5/9)
+        else:
+            raise TemperatureError(f"Provided string '{degrees}' contains no numbers")
+
+    @property
+    def kelvin(self):
+        return self._celsius + 273.15
+
+    @kelvin.setter
+    def kelvin(self, degrees):
+
+        if isinstance(degrees, (int, float)):
+            self._celsius = degrees - 273.15
+
+        elif isinstance(degrees, str):
+            parsed_degrees = handle_string_temps(degrees)
+
+            if parsed_degrees[-1] == "K":
+                self._celsius = float(parsed_degrees[:-1]) - 273.15
+            else:
+                self._celsius = float(parsed_degrees[:-1]) - 273.15
+        else:
+            raise TemperatureError(f"Provided string '{degrees}' contains no numbers")
+
     @classmethod
     def average(cls, temperatures):
         """Compute the average of a list of temperatures.
@@ -109,7 +150,18 @@ class Temperature:
             a Temperature object with average (mean) of the given temperatures
 
         """
-        pass
+
+        sum_of_temperatures = 0.0
+        try:
+            for temperature in temperatures:
+                sum_of_temperatures += temperature.celsius
+            average_temp = sum_of_temperatures / len(temperatures)
+        except TypeError:
+            raise TemperatureError(f"Provided list contains one or more non-temperature objects.")
+
+        return Temperature(average_temp)
+
+
 
 
 """
