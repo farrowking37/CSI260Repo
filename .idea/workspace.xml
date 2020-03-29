@@ -270,10 +270,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="487" height="523" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1585154245592" />
-    <state x="655" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585439911644">
+    <state x="655" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585517229045">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="655" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585439911644" />
+    <state x="655" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585517229045" />
     <state x="181" y="126" width="632" height="709" key="dock-window-1" timestamp="1582775140575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -291,7 +291,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CSI260$temperature_testing.coverage" NAME="temperature_testing Coverage Results" MODIFIED="1585441307564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Temperature Lab" />
+    <SUITE FILE_PATH="coverage/CSI260$temperature_testing.coverage" NAME="temperature_testing Coverage Results" MODIFIED="1585517289218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Temperature Lab" />
     <SUITE FILE_PATH="coverage/CSI260$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1585154029601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Week7/Library Project 2" />
     <SUITE FILE_PATH="coverage/CSI260$midterm_review.coverage" NAME="midterm_review Coverage Results" MODIFIED="1582307118940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Week 6/Class Notes" />
     <SUITE FILE_PATH="coverage/CSI260$celsius_tests.coverage" NAME="celsius_tests Coverage Results" MODIFIED="1585155881755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Temperature Lab" />

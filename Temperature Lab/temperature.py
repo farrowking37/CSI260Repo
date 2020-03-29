@@ -136,7 +136,7 @@ class Temperature:
             if parsed_degrees[-1] == "K":
                 self._celsius = float(parsed_degrees[:-1]) - 273.15
             else:
-                self._celsius = float(parsed_degrees[:-1]) - 273.15
+                self._celsius = float(parsed_degrees) - 273.15
         else:
             raise TemperatureError(f"Provided string '{degrees}' contains no numbers")
 
