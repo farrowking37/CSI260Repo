@@ -92,6 +92,7 @@ class Temperature:
         elif isinstance(degrees, str):
             parsed_degrees = handle_string_temps(degrees)
 
+            # check to see if final character needs to be ignored before conversion.
             if parsed_degrees[-1] == 'C':
                 self._celsius = float(parsed_degrees[:-1])
             else:
@@ -113,6 +114,7 @@ class Temperature:
         elif isinstance(degrees, str):
             parsed_degrees = handle_string_temps(degrees)
 
+            # Check to see if the final character needs to be ignored before final conversion.
             if parsed_degrees[-1] == "F":
                 self._celsius = (float(parsed_degrees[:-1]) - 32) * (5/9)
             else:
@@ -133,6 +135,7 @@ class Temperature:
         elif isinstance(degrees, str):
             parsed_degrees = handle_string_temps(degrees)
 
+            # Check to see if the final character needs to be removed before conversion.
             if parsed_degrees[-1] == "K":
                 self._celsius = float(parsed_degrees[:-1]) - 273.15
             else:
@@ -151,29 +154,19 @@ class Temperature:
 
         """
 
+        # Initialize the sum variable.
         sum_of_temperatures = 0.0
         try:
+            # For each temperature in the list, add the value of the _celsius variable to sum_of_temperatures
             for temperature in temperatures:
                 sum_of_temperatures += temperature.celsius
+
+            # Calculate the mean.
             average_temp = sum_of_temperatures / len(temperatures)
+
+        # Catch any type error that would occur if a non-temp argument was passed and re-raise as a temperature error.
         except TypeError:
             raise TemperatureError(f"Provided list contains one or more non-temperature objects.")
 
+        # Return a temperature object with average_temp passed as the value for degrees.
         return Temperature(average_temp)
-
-
-
-
-"""
-test1 = Temperature(1)
-print(test1.celsius)
-test2 = Temperature("1")
-print(test2.celsius)
-test3 = Temperature("33C")
-print(test3.celsius)
-test4 = Temperature("33.54")
-print(test4.celsius)
-test5 = Temperature("10005097.1C")
-print(test5.celsius)
-test6 = Temperature("Thisdon'tgotnumbersin")
-print(test6.celsius)"""
