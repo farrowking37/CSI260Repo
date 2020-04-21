@@ -259,7 +259,7 @@ while True:
         if location == 1:
             pattern = '^(?:(?:[\w:\/ -])+,){5}' + searchtext
         elif location == 2:
-            pattern =  searchtext + '$'
+            pattern = searchtext + '$'
         elif location == 3:
             pattern = '^(?:(?:[\w:\/ -])+,){5}.*' + searchtext + '.*'
         else:
