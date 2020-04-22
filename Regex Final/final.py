@@ -1,3 +1,22 @@
+"""Provides ability to search Windows Syslogs using various regex patterns.
+
+
+Author: John Shultz
+Class: CSI-260-03
+Assignment: Regex Mini Final
+Due Date: April 29th, 2020 11:59 PM
+
+Certification of Authenticity:
+I certify that this is entirely my own work, except where I have given
+fully-documented references to the work of others. I understand the definition
+and consequences of plagiarism and acknowledge that the assessor of this
+assignment may, for the purpose of assessing this assignment:
+- Reproduce this assignment and provide a copy to another member of academic
+- staff; and/or Communicate a copy of this assignment to a plagiarism checking
+- service (which may then retain a copy of this assignment on its database for
+- the purpose of future plagiarism checking)
+"""
+
 import csv
 import re
 
@@ -106,16 +125,7 @@ while True:
     # Print all logs
     if user_choice == 1:
         for log in logs:
-            log = log.split(",")
-
-            print(
-                f'Level" {log[0]}\n'
-                f'Date: {log[1]}\n'
-                f'Source: {log[2]}\n'
-                f'EventID: {log[3]}\n'
-                f'Category: {log[4]}\n'
-                f'Description: {log[5]}\n'
-            )
+            print(log)
 
     # Search based on log level
     elif user_choice == 2:
@@ -145,7 +155,7 @@ while True:
     elif user_choice == 3:
         print("Please use the mm/dd/yyyy format for dates.")
         print("Ex. 4/1/2020 | Ex. 12/21/1970")
-        date = str(input("Enter the deisred date: "))
+        date = str(input("Enter the desired date: "))
 
         pattern = "(.+,){1}" + date + ".*(,.+){4}"
         logs = match_handle(logs, pattern)
